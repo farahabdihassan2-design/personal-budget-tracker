@@ -1,80 +1,125 @@
-/* Body and Overall Layout */
+/* ==========================================
+   1. COLOR PALETTE & CSS VARIABLES
+   ========================================== */
+:root {
+  --primary-color: #1E293B;       /* Dark navy for headings */
+  --accent-color: #059669;        /* Green for buttons */
+  --accent-hover: #047857;        /* Darker green when hovering */
+  --bg-color: #F8FAFC;            /* Soft light background */
+  --card-bg: #FFFFFF;             /* Pure white container */
+  --text-color: #334155;          /* Easy-to-read dark text */
+  --border-color: #E2E8F0;        /* Light gray borders */
+  --alt-row-bg: #F1F5F9;          /* Light gray for alternating rows */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #f0f2f5;
+  font-family: var(--font-body);
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+input, select, button {
+  font-family: inherit;
 }
 
 /* Heading Class Selectors */
-.main-heading {
-    color: #1a365d;
+header {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
     text-align: center;
 }
 
-.subheading {
+.main-heading, h2 {
+    color: var(--primary-color);
     text-align: center;
-    color: #4a5568;
-    font-style: italic;
+    font-family: var(--font-heading);
+}
+
+.subheading {
+  text-align: center;
+  color: var(--text-color);
+  font-style: italic;
 }
 
 /* Part 2: Add Expense Section Styling */
 .add-expense-section {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+  background-color: var(--card-bg);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
 /* Input Elements Styling */
-input {
+input, select {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: 10px 12px;
     margin-bottom: 10px;
-    border: 1px solid #cbd5e0;
-    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
 button {
-    background-color: #2b6cb0;
-    color: white;
-    padding: 10px 15px;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: #FFFFFF;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
 }
 
 /* Part 3: Expenses Placeholder Section Styling */
 .expenses-section {
-    background-color: #ebf8ff;
+    background-color: var(--card-bg);
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
-    border-left: 4px solid #3182ce;
-} 
+    border: 1px solid var(--border-color);
+}
+
 /* Section 1: Expense Table Styling */
 .expense-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
 }
-.expense-table th,
-.expense-table td {
-  padding: 12px 15px;
-  text-align: left;
-  border: 1px solid #dddddd;
+th {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
 }
-.expense-table thead tr {
-  background-color: #2c3e50;
-  color: #ffffff;
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
 }
-.expense-table tbody tr:nth-child(even) {
-  background-color: #f8f9fa;
+
+tbody tr:nth-child(even) {
+    background-color: var(--alt-row-bg);
 }
+
 /* Section 2: Upgraded Form Styling */
 .form-group {
   margin-bottom: 15px;
@@ -86,22 +131,7 @@ button {
   margin-bottom: 5px;
   color: #333333;
 }
-.form-group input,
-.form-group select {
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-#expense-form button {
-  background-color: #007bff;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
+
 /* Section 3: Multimedia Styling */
 .header-container {
   display: flex;
@@ -122,15 +152,9 @@ button {
 }
 /* Table row hover effect */
 tbody tr:hover {
-  background-color: #f1f5f9;
-  transition: background-color 0.2s ease;
+    background-color: var(--alt-row-bg);
+    transition: background-color 0.2s ease;
 }
-
-/* Pointer cursor on buttons */
-button {
-  cursor: pointer;
-}
-/* --- Section 5: Advanced CSS Selectors --- */
 
 /* 1. Focus state for inputs */
 input:focus, select:focus {
@@ -139,24 +163,19 @@ input:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* 2. Position pseudo-class (styles even rows in the table) */
-tbody tr:nth-child(even) {
-  background-color: #f8fafc;
-}
-
-/* 3. Negation pseudo-class (targets inputs that are NOT the submit button) */
+/* 2. Negation pseudo-class (targets inputs that are NOT the submit button) */
 input:not([type="submit"]) {
-  border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
 }
 
-/* 4. Direct child selector (targets elements directly inside the add expense section) */
+/* 3. Direct child selector (targets elements directly inside the add expense section) */
 .add-expense-section > h2 {
-  color: #1e293b;
-  margin-bottom: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
 }
 
 /* 5. Descendant selector (targets table cells inside the expenses section) */
 .expense-table-section td {
   padding: 12px 16px;
-  color: #334155;
+  color: var(--text-color);
 }
